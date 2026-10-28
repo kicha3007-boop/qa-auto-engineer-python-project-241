@@ -1,0 +1,33 @@
+[project]
+name = "hexlet-code"
+version = "0.1.0"
+description = "Difference calculator: compares two flat JSON or YAML files"
+authors = [{ name = "Kichigin Sergey" }]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pyyaml>=6.0.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-cov>=6.0.0",
+    "ruff>=0.6.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["gendiff"]
+
+[project.scripts]
+gendiff = "gendiff.scripts.gendiff:main"
+
+[tool.coverage.report]
+fail_under = 90
+
+[tool.coverage.run]
+omit = ["gendiff/scripts/*"]
